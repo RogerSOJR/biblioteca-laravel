@@ -10,16 +10,16 @@
 <body>
     <h1>Produtos</h1>
 
-    <form action="/cadastrar-produto" method="POST">
+    <form action="/editar-produtos/{{ $produto->id }}" method="POST">
         @csrf
         <label for="lblNome">Nome:</label>
-        <input type="text" name="nome">
+        <input type="text" name="nome" value="{{ $produto->nome }}">
         <br><br>
         <label for="lblValor">Valor:</label>
-        <input type="text" name="valor">
+        <input type="text" name="valor" value="{{ $produto->valor }}">
         <br><br>
         <label for="lblQuantidade">Quantidade:</label>
-        <input type="text" name="estoque">
+        <input type="text" name="estoque" value="{{ $produto->estoque }}">
         <br><br>
         <button>Cadastrar</button>
     </form>
