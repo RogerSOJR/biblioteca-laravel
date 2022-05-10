@@ -28,23 +28,23 @@ route::post('/cadastrar-produto', function (Request $request) {
         'valor' => $request->valor,
         'estoque' => $request->estoque,
     ]);
-
-    echo "Produto criado com sucesso!";
+    echo '<script>alert("Produto cadastrado com sucesso!")</script>';
+    return view('inicio');
 });
 
-Route::get('/listar-produtos/{id}', function ($id) {
+Route::get('/listar-produtos', function() {
     //dd(Produto::find($id)); //debug and die
-    $produto = Produto::find($id);
+    $produto = Produto::all();
     return view('listar', ['produto' => $produto]);
 });
 
-Route::get('/editar-produtos/{id}', function ($id) {
+Route::get('/editar-produto/{id}', function ($id) {
     //dd(Produto::find($id)); //debug and die
     $produto = Produto::find($id);
     return view('editar', ['produto' => $produto]);
 });
 
-Route::post('/editar-produtos/{id}', function (Request $request, $id) {
+Route::post('/editar-produto/{id}', function (Request $request, $id) {
     //dd($request)-> all());
     $produto = Produto::find($id);
 
@@ -54,13 +54,15 @@ Route::post('/editar-produtos/{id}', function (Request $request, $id) {
         'estoque' => $request->estoque
     ]);
 
-    echo "Produto editado com sucesso!";
+    echo '<script>alert("Produto atualizado com sucesso!")</script>';
+    return view('inicio');
 });
 
-Route::get('/excluir-produtos/{id}', function ($id) {
+Route::get('/excluir-produto/{id}', function ($id) {
     //dd($request-all());
     $produto = Produto::find($id);
     $produto->delete();
 
-    echo "Produto excluído com sucesso!";
+    echo '<script>alert("Produto excluído com sucesso!")</script>';
+    return view('inicio');
 });
